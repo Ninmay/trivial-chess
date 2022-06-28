@@ -18,15 +18,29 @@ abstract class Piece {
   }
 
   public Point
-  move()
+  moveAttempt()
   {
-    ArrayList<Point> mvset = getMoveSet();
     Random r = new Random();
+    ArrayList<Point> mvset = getMoveSet();
+    if (mvset.isEmpty())
+      return null;
 
-    return point = mvset.get(r.nextInt(RANDOM_RATE) % mvset.size());
+    return mvset.get(r.nextInt(RANDOM_RATE) % mvset.size());
+  }
+
+  public Point
+  move(Point p)
+  {
+    return point = p; 
   }
 
   abstract protected ArrayList<Point> getMoveSet();
+
+  public boolean
+  equals(Point p)
+  {
+    return point.equals(p);
+  }
 }
 
 class King extends Piece {
@@ -37,6 +51,14 @@ class King extends Piece {
     super(x, y);
   }
 
+  @Override
+  public String
+  toString()
+  {
+    return "K: " + super.toString();
+  }
+
+  @Override
   protected ArrayList<Point>
   getMoveSet()
   {
@@ -81,6 +103,7 @@ class Pawn extends Piece {
     super(x, y);
   }
   
+  @Override
   protected ArrayList<Point>
   getMoveSet()
   {
@@ -101,7 +124,15 @@ class Bishop extends Piece {
   {
     super(x, y);
   }
+
+  @Override
+  public String
+  toString()
+  {
+    return "B: " + super.toString();
+  }
   
+  @Override
   protected ArrayList<Point>
   getMoveSet()
   {
@@ -173,7 +204,15 @@ class Rook extends Piece {
   {
     super(x, y);
   }
+
+  @Override
+  public String
+  toString()
+  {
+    return "R: " + super.toString();
+  }
   
+  @Override
   protected ArrayList<Point>
   getMoveSet()
   {
@@ -200,6 +239,14 @@ class Knight extends Piece {
     super(x, y);
   }
   
+  @Override
+  public String
+  toString()
+  {
+    return "N: " + super.toString();
+  }
+
+  @Override
   protected ArrayList<Point>
   getMoveSet()
   {
@@ -225,7 +272,15 @@ class Queen extends Piece {
   {
     super(x, y);
   }
+
+  @Override
+  public String
+  toString()
+  {
+    return "Q: " + super.toString();
+  }
   
+  @Override
   protected ArrayList<Point>
   getMoveSet()
   {
