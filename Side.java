@@ -1,3 +1,5 @@
+package out;
+
 import java.util.ArrayList; 
 import java.util.Random;
 import java.util.StringJoiner;
@@ -39,7 +41,7 @@ abstract class Side {
       if (pieces.get(i).equals(p))
         break;
     if (i == 0)
-      throw new MateException("SZACH MAT");
+      throw new MateException("SZACH MAT na polu " + p);
 
     if (i != pieces.size())
       pieces.remove(i);

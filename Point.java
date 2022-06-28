@@ -1,3 +1,5 @@
+package out;
+
 import java.util.ArrayList; 
 
 final class Point {
